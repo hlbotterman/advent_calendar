@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Imprima&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?t=12345">
+</head>
+<body>
+  <div class="overlay"></div>
+  <h1 id="calendar-title">Calendrier de l'Avent</h1>
+  <div id="password-section">
+    <p>Entrez le mot de passe pour accéder au calendrier :</p>
+    <input type="password" id="password" placeholder="Mot de passe">
+    <button onclick="checkPassword()">Entrer</button>
+  </div>
+  <div id="calendar-section" style="display: none;">
+    <div class="calendar" id="calendar-grid">
+      <!-- Contenu du calendrier -->
+    </div>
+    <button id="reset-button" onclick="resetCalendar()">Réinitialiser le calendrier</button>
+    <button id="info-button" onclick="showInfo()">Info</button>
+    <div id="info-popup" class="info-popup" style="display: none;">
+      <button id="info-popup-close" class="close-btn" onclick="closeInfoPopup()">✖</button>
+      <p id="welcome-text" style="text-align: center; font-size: 2rem; font-weight: bold";>🎄 README ! 🎶 </p>
+      <p>
+        Ce calendrier contient quelques chansons que j'aime ou que j'aimais bien à un moment donné.
+        Par sûre de toutes les apprécier encore, et sûre que certaines sont un peu nulles.
+        Un peu comme un calendrier de l'Avent avec des chocolats : il y en a toujours qu'on n'aime pas.
+        Et au final, ce qui est amusant c'est juste d'ouvrir une case et de découvrir l'intérieur,
+        peu importe si on aime vraiment ce qu'il y a dedans. Donc voilà...
+        Cela dit, je trouvais que c'était un moyen fun de découvrir certains goûts d'une autre personne.</p>
+      <p>Note : il faut ouvrir avec Chrome, Edge ou Vivaldi, il y a des problèmes d'affichage avec Safari.</p>
+    </div>
+    <div class="overlay" id="popup-overlay"></div>
+    <div class="popup" id="popup">
+        <button class="close-btn" id="popup-close">✖</button>
+        <p id="day-text"></p>
+        <div id="video-container">
+            <iframe id="youtube-video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="script.js?t=12345"></script>
+
+</body>
+</html>
+

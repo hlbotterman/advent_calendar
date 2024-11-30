@@ -1,0 +1,10 @@
+.venv
+.DS_Store
+node_modules/
+package-lock.json
+package.json
+
+data/private_texts.json
+data/tiles/
+decryptTexts.js
+encryptTexts.js 
