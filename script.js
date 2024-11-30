@@ -1,6 +1,6 @@
 const HASHED_PASSWORD = "9adfb0a6d03beb7141d8ec2708d6d9fef9259d12cd230d50f70fb221ae6cabd5";
 const DEV_MODE = false;
-const TEST_DATE = new Date("2024-12-03");
+// const TEST_DATE = new Date("2024-12-03");
 
 let dayTexts = {}; 
 let youtubeEmbeddedLinks = {}; 
