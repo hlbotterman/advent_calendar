@@ -1,23 +1,27 @@
-/* Style général */
+/* === FONTS ET TYPOGRAPHIE === */
+body {
+    font-family: 'Imprima', sans-serif;
+    color: #0c0606;
+    text-align: center;
+}
+
+/* === STYLE GÉNÉRAL DU BODY === */
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Imprima', sans-serif;
-    text-align: center;
-    background-image: url('data/background.jpg'); /* Remplacez par l'URL de votre image */
-    background-size: cover; /* L'image couvre toute la fenêtre */
-    background-position: center; /* Centré */
-    background-repeat: no-repeat; /* Pas de répétition */
-    background-attachment: fixed; /* L'image reste fixe lors du défilement */
-    color: #0c0606;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-
+    background-image: url('data/background.jpg'); /* Image de fond */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
+/* === OVERLAY (COUCHE SEMI-TRANSPARENTE) === */
 .overlay {
     position: absolute;
     top: 0;
@@ -26,152 +30,147 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Couche noire semi-transparente */
     z-index: -1; /* Sous le contenu principal */
-  }
+}
 
-  
-  /* Titre */
-  h1 {
+/* === TITRES === */
+h1 {
+    margin-top: 20px;
     margin-bottom: 10px;
     color: #280303;
-    text-align: center;
-    margin-top: 20px;
     font-size: 4rem;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-  }
-  
-/* Grille 4x6 avec dimensions fixes */
-.calendar {
-    display: grid;
-    -webkit-display: flex; /* Ajout pour Safari */
-    grid-template-columns: repeat(6, 1fr); /* 6 colonnes */
-    grid-template-rows: repeat(4, 1fr);   /* 4 lignes */
-    width: 100%; /* Largeur totale de la grille */
-    max-width: 95vmin; /* Largeur maximale */
-    height: calc(95vmin / 1.5); /* Hauteur basée sur un ratio fixe */
-    max-height: 800px; /* Hauteur maximale */
-    justify-content: center; /* Centrer la grille horizontalement */
-    border: 5px solid #000; /* Bordure noire de 5px */
-    border-radius: 10px; /* Coins légèrement arrondis */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); /* Ombre pour un effet de relief */
-    background-color: #f9f9f9; /* Fond clair pour le calendrier */
-}
-  
-/* Style des jours */
-.day {
-    background-color: #888;
-    border: 0;
-    border-radius: 0;
-    cursor: pointer;
-    font-size: 2rem; /* Taille du texte */
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    aspect-ratio: 2/3;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-    overflow: hidden;
-    box-shadow: none !important; /* Pas d'ombre */
-}
-
-/* QR code dans la case */
-.day img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Remplit la case sans distorsion */
-    border-radius: 10px; /* Correspond à la bordure des cases */
-}
-
-/* Style pour les jours verrouillés (jour > date actuelle) */
-.day.locked {
-    background-color: #d9e2ec;
-    color: #9baec8;
-    cursor: not-allowed;
-}
-  
-/* Style pour les jours déverrouillables mais non encore débloqués */
-.day.unlockable {
-    background-color: #b2f2bb; 
-    color: #155724; 
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Animation fluide */
-}
-/* Effet au survol */
-.day.unlockable:hover {
-    background-color: #8ce99a; /* Gris légèrement plus clair au survol */
-    transform: scale(1.05); /* Légère mise en avant */
-}
-  
-/* Style pour les jours déjà débloqués (QR code visible) */
-.day.unlocked img {
-    width: 100%; /* Le QR code occupe tout l'espace disponible */
-    height: auto;
-    display: block;
-}
-  
-  
-/* Style pour le conteneur vidéo */
-#video-container {
-    width: 100%;
-    margin-top: 20px;
     text-align: center;
-  }
-  
-/* Vidéo YouTube */
-#youtube-video {
-    width: 100%; /* La vidéo occupe toute la largeur du panneau */
-    height: 60vh; /* Proportion fixe pour un grand affichage */
-    border-radius: 10px; /* Bord arrondi, optionnel */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
-  }
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
 
-#info-button {
-    position: absolute; /* Permet de positionner le bouton */
-    top: 20px; /* Distance du bas */
-    left: 20px; /* Distance de la droite */
-    padding: 10px 20px; /* Marges internes pour un bouton lisible */
-    background-color: #ff7675; /* Couleur de fond (rouge clair pour attirer l'attention) */
-    color: white; /* Texte en blanc */
-    border: none; /* Pas de bordure */
-    border-radius: 5px; /* Coins arrondis */
-    cursor: pointer; /* Curseur pointer */
+/* === TEXTE DE BIENVENUE === */
+#welcome-text {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* === BOUTONS D'INFORMATION ET DE RÉINITIALISATION === */
+#info-button,
+#reset-button {
+    position: absolute;
+    top: 20px;
+    padding: 10px 20px;
+    background-color: #ff7675; /* Rouge clair */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     font-size: 14px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre */
     transition: background-color 0.3s ease; /* Animation fluide pour le hover */
 }
 
-#info-button:hover {
+#info-button {
+    left: 20px;
+}
+
+#reset-button {
+    right: 20px;
+}
+
+#info-button:hover,
+#reset-button:hover {
     background-color: #d63031; /* Rouge plus foncé */
 }
 
-#welcome-text {
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold
+/* === CALENDRIER === */
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 colonnes */
+    grid-template-rows: repeat(4, 1fr);   /* 4 lignes */
+    width: 100%;
+    max-width: 95vmin;
+    height: calc(95vmin / 1.5);
+    max-height: 800px;
+    justify-content: center;
+    border: 5px solid #000;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    background-color: #f9f9f9;
 }
 
+/* === CASES DU CALENDRIER (JOURS) === */
+.day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #888;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    aspect-ratio: 2/3;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    overflow: hidden;
+    box-shadow: none !important;
+}
+
+/* QR Code dans la case du jour */
+.day img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px; /* Correspond à la bordure des cases */
+}
+
+/* === STYLES SPÉCIFIQUES AUX JOURS === */
+/* Jours verrouillés */
+.day.locked {
+    background-color: #d9e2ec;
+    color: #9baec8;
+    cursor: not-allowed;
+}
+
+/* Jours déverrouillables mais non encore débloqués */
+.day.unlockable {
+    background-color: #b2f2bb;
+    color: #155724;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Effet au survol pour les jours déverrouillables */
+.day.unlockable:hover {
+    background-color: #8ce99a;
+    transform: scale(1.05);
+}
+
+/* Jours déjà débloqués (QR code visible) */
+.day.unlocked img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* === POPUP D'INFORMATION GÉNÉRALE === */
 #info-popup {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: 'Imprima', sans-serif;
     width: 80%;
     max-width: 500px;
     background-color: rgb(9, 103, 64);
+    color: #c9c5be;
     border-radius: 10px;
     padding: 20px;
     z-index: 2000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: none;
-  }
-  
+    font-family: 'Imprima', sans-serif;
+}
+
 #info-popup p {
     margin: 30px;
     font-size: 16px;
     line-height: 1.5;
     text-align: left;
 }
-  
+
 #info-popup .close-btn {
     position: absolute;
     top: 10px;
@@ -187,49 +186,30 @@ body {
     color: #645e5e;
 }
 
-#reset-button {
-    position: absolute; /* Permet de positionner le bouton */
-    top: 20px; /* Distance du bas */
-    right: 20px; /* Distance de la droite */
-    padding: 10px 20px; /* Marges internes pour un bouton lisible */
-    background-color: #ff7675; /* Couleur de fond (rouge clair pour attirer l'attention) */
-    color: white; /* Texte en blanc */
-    border: none; /* Pas de bordure */
-    border-radius: 5px; /* Coins arrondis */
-    cursor: pointer; /* Curseur pointer */
-    font-size: 14px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre */
-    transition: background-color 0.3s ease; /* Animation fluide pour le hover */
-}
-
-/* Effet au survol */
-#reset-button:hover {
-    background-color: #d63031; /* Rouge plus foncé */
-}
-
-/* Afficher le bouton uniquement quand le calendrier est visible */
-#calendar-section:has(#reset-button) #reset-button {
-    display: block; /* Affiche le bouton quand le calendrier est visible */
-  }
-
+/* === POPUP D'UN JOUR SPÉCIFIQUE === */
 .popup {
     position: fixed;
-    top: 50%; /* Centre verticalement */
-    left: 50%; /* Centre horizontalement */
-    transform: translate(-50%, -50%); /* Centre la popup exactement */
-    width: 90%; /* Largeur adaptative */
-    max-width: 800px; /* Augmente la largeur maximale */
-    height: auto; /* Hauteur automatique en fonction du contenu */
-    max-height: 90vh; /* Limite la hauteur à 90% de la hauteur de l'écran */
-    padding: 30px; /* Marges internes plus grandes */
-    font-family: 'Imprima', sans-serif;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    padding: 30px;
+    background-color: #153122;
     color: #c9c5be !important;
-    background-color: #153122 !important;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25); /* Ombre plus visible */
-    border-radius: 10px; /* Coins légèrement arrondis */
-    z-index: 1000; /* Au-dessus des autres éléments */
-    display: none; /* Masquée par défaut */
-    overflow-y: auto; /* Ajoute un défilement si le contenu dépasse */
+    border-radius: 10px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    display: none;
+    overflow-y: auto;
+    font-family: 'Imprima', sans-serif;
+}
+
+.popup #day-text {
+    text-align: left;
+    margin: 0;
+    padding: 0;
 }
 
 .popup .close-btn {
@@ -247,20 +227,35 @@ body {
     color: #000;
 }
 
+/* === OVERLAY POUR LES POPUPS === */
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
-    z-index: 999; /* Sous la popup mais au-dessus du contenu */
-    display: none; /* Masqué par défaut */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
 }
 
+/* === CONTENEUR VIDÉO === */
+#video-container {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
 
-.popup #day-text {
-    text-align: left; /* Aligne le texte à gauche */
-    margin: 0; /* Optionnel, supprime les marges si nécessaire */
-    padding: 0; /* Optionnel, ajuste les espacements */
+/* VIDÉO YOUTUBE INTÉGRÉE */
+#youtube-video {
+    width: 100%;
+    height: 60vh;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* === ADAPTATION DU BOUTON DE RÉINITIALISATION === */
+/* Afficher le bouton uniquement quand le calendrier est visible */
+#calendar-section:has(#reset-button) #reset-button {
+    display: block;
 }
