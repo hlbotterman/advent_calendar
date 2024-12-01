@@ -55,10 +55,10 @@ h1 {
     position: absolute;
     top: 20px;
     padding: 10px 20px;
-    background-color: #ff7675; /* Rouge clair */
+    background-color: #bf0603;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 0%;
     cursor: pointer;
     font-size: 14px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre */
@@ -75,7 +75,7 @@ h1 {
 
 #info-button:hover,
 #reset-button:hover {
-    background-color: #d63031; /* Rouge plus foncé */
+    background-color: #bf0603;
 }
 
 /* === CALENDRIER === */
@@ -258,4 +258,87 @@ h1 {
 /* Afficher le bouton uniquement quand le calendrier est visible */
 #calendar-section:has(#reset-button) #reset-button {
     display: block;
+}
+
+/* === MESSAGE FINAL === */
+/* Bouton du message final */
+#final-message-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 15px;
+    background-color: #bf0603;
+    color: white;
+    border: 2px solid #bf0603;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1);
+    animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.8);
+    }
+}
+
+#final-message-button:hover {
+    background-color: #d63031;
+}
+
+/* Popup du message final */
+#final-message-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 500px;
+    background-color: #870705;
+    color: #c9c5be;
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 2000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+#final-message-popup p {
+    font-size: 2rem;
+    text-align: center;
+}
+
+#final-message-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+    display: none;
+}
+
+/* Bouton de fermeture pour la popup du message final */
+#final-message-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #aaa;
+}
+
+#final-message-close:hover {
+    color: #000;
 }

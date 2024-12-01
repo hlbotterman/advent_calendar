@@ -1,59 +1,98 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Imprima&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?t=12345">
+    <!-- MÉTADONNÉES DE LA PAGE -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier de l'Avent</title>
+
+    <!-- POLICES GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Chargement des polices Imprima et Mona Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Imprima&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+    <!-- FEUILLE DE STYLE CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="overlay"></div>
-  <h1 id="calendar-title">Calendrier de l'Avent</h1>
-  <div id="password-section">
-    <p>Entrez le mot de passe pour accéder au calendrier :</p>
-    <input type="password" id="password" placeholder="Mot de passe">
-    <button onclick="checkPassword()">Entrer</button>
-  </div>
-  <div id="calendar-section" style="display: none;">
-    <div class="calendar" id="calendar-grid">
-      <!-- Contenu du calendrier -->
+    <!-- OVERLAY GÉNÉRAL -->
+    <div class="overlay"></div>
+
+    <!-- TITRE PRINCIPAL -->
+    <h1 id="calendar-title">Calendrier de l'Avent</h1>
+
+    <!-- SECTION MOT DE PASSE -->
+    <div id="password-section">
+        <p>Entrez le mot de passe pour accéder au calendrier :</p>
+        <input type="password" id="password" placeholder="Mot de passe">
+        <button onclick="checkPassword()">Entrer</button>
     </div>
-    <button id="reset-button" onclick="resetCalendar()">Réinitialiser le calendrier</button>
-    <button id="info-button" onclick="showInfo()">Info</button>
-    <div id="info-popup" class="info-popup" style="display: none;">
-      <button id="info-popup-close" class="close-btn" onclick="closeInfoPopup()">✖</button>
-      <p id="welcome-text" style="text-align: center; font-size: 2rem; font-weight: bold";>🎄 Playlist de l'Avent 🎶 </p>
-      <p>
-        Chaque jour, une petite case à ouvrir avec une chanson qui m'a 'marqué' à un moment donné.
-        Il y en a certaines que j'aime encore beaucoup et que j'écoute encore,
-        d'autres... disons qu'elles sont là pour le charme du hasard 😬
-        En fait, c'est peut-être plutôt la playlist du top au flop mdrr...
-        Mais bon, c'est un peu comme tous les calendriers de l'Avent : il y a toujours des cases qu'on n'aime pas.
-        Et au final, ce qui est amusant c'est juste d'ouvrir une case et de découvrir l'intérieur,
-        peu importe si on aime vraiment ce qu'il y a dedans. Donc voilà...😁
-        Cela dit, je trouvais l'idée amusante et fun à coder ; et j'espère que tu apprécieras aussi !
-        Et si c'est pas le cas... bah tu peux faire semblant 😅
-      </p>
-      <p>Note : il faut ouvrir avec Chrome, Edge ou Vivaldi sur ordinateur,
-        il y a des problèmes d'affichage avec Safari ou sur téléphone.
-        Il faut recharger/ouvrir la page chaque jour, sur le même navigateur pour avoir la continuité des jours.
-        Tu peux toujours cliquer sur le bouton "Réinitialiser le calendrier" pour tout recommencer.
-      </p>
-    </div>
-    <div class="overlay" id="popup-overlay"></div>
-    <div class="popup" id="popup">
-        <button class="close-btn" id="popup-close">✖</button>
-        <p id="day-text"></p>
-        <div id="video-container">
-            <iframe id="youtube-video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <!-- SECTION CALENDRIER -->
+    <div id="calendar-section" style="display: none;">
+        <!-- GRILLE DU CALENDRIER -->
+        <div class="calendar" id="calendar-grid">
+            <!-- Les cases du calendrier seront générées dynamiquement par JavaScript -->
+        </div>
+
+        <!-- BOUTONS D'ACTION -->
+        <button id="reset-button" onclick="resetCalendar()">Réinitialiser le calendrier</button>
+        <button id="info-button" onclick="showInfo()">READ ME</button>
+        <button id="final-message-button" style="display: none;" onclick="showFinalMessage()">🎄</button>
+
+        <!-- POPUP D'INFORMATION -->
+        <div id="info-popup" class="info-popup" style="display: none;">
+            <button id="info-popup-close" class="close-btn" onclick="closeInfoPopup()">✖</button>
+            <p id="welcome-text" style="text-align: center; font-size: 2rem; font-weight: bold";>🎄 Playlist de l'Avent 🎶 </p>
+            <p>
+                Chaque jour, une petite case à ouvrir avec une chanson que j'ai aimé à un moment donné.
+                Il y en a certaines que j'écoute encore volontiers,
+                d'autres... disons qu'elles sont là pour le charme du hasard 😬
+                Mais bon, c'est un peu comme tous les calendriers de l'Avent : il y a toujours des cases qu'on n'aime pas.
+                Et au final, ce qui est amusant c'est juste d'ouvrir une case et de découvrir l'intérieur,
+                peu importe si on aime vraiment ce qu'il y a dedans. Donc voilà...😁
+                Cela dit, je trouvais l'idée amusante et fun à coder ; et j'espère que tu apprécieras aussi !
+                Et si c'est pas le cas... bah tu peux faire semblant 😅
+            </p>
+            <p>
+                Note : il faut ouvrir avec Chrome, Edge ou Vivaldi sur ordinateur,
+                il y a des problèmes d'affichage avec Safari ou sur téléphone.
+                Il faut recharger/ouvrir la page chaque jour, sur le même navigateur pour avoir la continuité des jours.
+                Tu peux toujours cliquer sur le bouton "Réinitialiser le calendrier" pour tout recommencer.
+            </p>
+        </div>
+
+        <!-- OVERLAY POUR LE POPUP DU JOUR -->
+        <div class="overlay" id="popup-overlay"></div>
+
+        <!-- POPUP DU JOUR SÉLECTIONNÉ -->
+        <div class="popup" id="popup">
+            <button class="close-btn" id="popup-close">✖</button>
+            <p id="day-text"></p>
+            <div id="video-container">
+                <iframe id="youtube-video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-  <script src="script.js?t=12345"></script>
 
+    <div class="overlay" id="final-message-overlay" style="display: none;"></div>
+    <div class="popup" id="final-message-popup" style="display: none;">
+        <button class="close-btn" id="final-message-close">✖</button>
+        <p id="final-message-text">
+          Voilà, j'espère que tu as trouvé cela amusant.
+          J'avais pas trop d'idée pour la dernière chanson en vrai aha,
+          c'est pas la plus festive ou rythmée du tout, mais je l'aime bien quand même.
+        </p>
+
+        <p>Je te souhaite aussi d'avoir "le best day of your life", et un joyeux Noël !!🎄🎁🫶</p>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <!-- Bibliothèque CryptoJS pour le chiffrement -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <!-- Script principal -->
+    <script src="script.js"></script>
 </body>
 </html>
-

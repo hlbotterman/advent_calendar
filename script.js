@@ -158,6 +158,7 @@ function updateDayStyles() {
           showPanel(dayNumber, dayElement);
         });
       }
+      checkAllDaysUnlocked();
     } else {
       dayElement.classList.add("locked");
     }
@@ -220,6 +221,8 @@ function resetCalendar() {
     dayElement.classList.remove("locked", "unlockable", "unlocked");
   });
 
+  document.getElementById("final-message-button").style.display = "none";
+
   loadTexts();
   loadEmbeddedLinks();
   updateDayStyles();
@@ -242,6 +245,55 @@ function closeInfoPopup() {
   infoPopup.style.display = "none";
 }
 
+/**
+ * Vérifie si tous les jours sont débloqués.
+ */
+function checkAllDaysUnlocked() {
+  const totalDays = 24;
+  const today = new Date();
+  const currentDay = DEV_MODE ? 24 : today.getDate();
+
+  const daysToUnlock = Math.min(currentDay, totalDays);
+
+  // Générer une liste des jours débloqués
+  const unlockedDays = [];
+  for (let day = 1; day <= daysToUnlock; day++) {
+      unlockedDays.push(day);
+  }
+
+  let viewedDays = JSON.parse(localStorage.getItem("viewedDays")) || [];
+
+  if (DEV_MODE) {
+      viewedDays = unlockedDays;
+      localStorage.setItem("viewedDays", JSON.stringify(viewedDays));
+  }
+
+  const allUnlocked = unlockedDays.every(day => viewedDays.includes(day));
+
+  if (allUnlocked && daysToUnlock === totalDays) {
+      document.getElementById("final-message-button").style.display = "block";
+  } else {
+      document.getElementById("final-message-button").style.display = "none";
+  }
+}
+
+
+/**
+ * Affiche la popup du message final.
+ */
+function showFinalMessage() {
+  document.getElementById("final-message-popup").style.display = "block";
+  document.getElementById("final-message-overlay").style.display = "block";
+}
+
+/**
+* Ferme la popup du message final.
+*/
+function closeFinalMessage() {
+  document.getElementById("final-message-popup").style.display = "none";
+  document.getElementById("final-message-overlay").style.display = "none";
+}
+
 // === GESTIONNAIRES D'ÉVÉNEMENTS ===
 
 // Gestion du clic sur le bouton d'information
@@ -251,6 +303,10 @@ document.getElementById("info-popup-close").addEventListener("click", closeInfoP
 // Gestion du clic pour fermer le popup d'un jour
 document.getElementById("popup-close").addEventListener("click", closePopup);
 document.getElementById("popup-overlay").addEventListener("click", closePopup);
+
+// Gestion du clic pour le message final
+document.getElementById("final-message-close").addEventListener("click", closeFinalMessage);
+document.getElementById("final-message-overlay").addEventListener("click", closeFinalMessage);
 
 // Chargement initial du contenu après le chargement du DOM
 document.addEventListener("DOMContentLoaded", () => {
