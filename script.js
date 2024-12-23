@@ -179,7 +179,7 @@ function showPanel(day, dayElement) {
   const youtubeVideo = document.getElementById("youtube-video");
 
   if (day=="24"){
-    dayTexts[day] = "24. Atlantis de Seafret. Sortie en 2015 sur leur album Tell Me It's Real, cette chanson parle de perte, de nostalgie et de ce moment où quelque chose d'important s'effondre, comme la légendaire Atlantide (SU-PER la joie pour la dernière chanson ! 😅). \nLe clip raconte l'histoire d'un lien improbable entre un jeune garçon et un homme mystérieux vivant en marge de la société. Bien que visuellement éloigné des paroles, il explore les mêmes thèmes universels : la fragilité des liens, la peur de ce qui est inconnu et le regret face à ce qui est perdu. Je trouve cela assez joli, même si c'est plutôt triste.";
+    dayTexts[day] = "24. En cette veille de Noël, c'est LA chanson ultime pour clore ce calendrier en beauté ! Ca rappelle tellement les messes de l'école avant les vacances, l'horreur ce Jésus ! Bon, j'espère que t'es plus aussi fan de catéchisme et de Jésus qu'avant quand même sinon... bah peu importe puisque 'Quand il reviendraaa il nous pardonnera comme il l'avait fait pour Judaaaaaaaa' (sa tête est tellement Gucci, rien que pour ça, j'étais obligée de mettre cette chanson).";
   }
   dayText.textContent = dayTexts[day] || "Texte indisponible pour ce jour.";
   youtubeVideo.src = youtubeEmbeddedLinks[day] || "";
