@@ -195,6 +195,12 @@ function showPanel(day, dayElement) {
     localStorage.setItem("unlockedDays", JSON.stringify(unlockedDays));
   }
 
+  let viewedDays = JSON.parse(localStorage.getItem("viewedDays")) || [];
+  if (!viewedDays.includes(day)) {
+      viewedDays.push(day);
+      localStorage.setItem("viewedDays", JSON.stringify(viewedDays));
+  }
+
   updateDayStyles();
 }
 
