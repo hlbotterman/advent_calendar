@@ -1,6 +1,6 @@
 // === CONSTANTES ET CONFIGURATION ===
 const HASHED_PASSWORD = "9adfb0a6d03beb7141d8ec2708d6d9fef9259d12cd230d50f70fb221ae6cabd5";
-const DEV_MODE = false;
+const DEV_MODE = true;
 
 const fixedOrder = [12, 5, 8, 1, 24, 19, 10, 15, 3, 6, 17, 2, 7, 23, 20, 9, 14, 22, 13, 18, 21, 4, 11, 16];
 
